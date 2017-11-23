@@ -2,7 +2,6 @@ library(icesTAF)
 
 url <- "https://stockassessment.org/datadisk/stockassessment/userdirs/user3/nscod16-ass02/"
 
-
 #######################
 ## 1  Download files ##
 #######################
@@ -27,7 +26,6 @@ files <- gsub(".*>(.*.R)<.*", "\\1", files)
 for(i in seq_along(files))
   download.file(paste0(url,"src/",files)[i], paste0("src/",files)[i], quiet=TRUE)
 
-
 ##################
 ## 2  Run model ##
 ##################
@@ -44,4 +42,4 @@ source("src/datascript.R")
 
 ## Run model
 setwd("run")
-system("sam -nr 2 -noinit")
+system("./sam -nr 2 -noinit")
