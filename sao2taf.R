@@ -11,12 +11,12 @@ files <- readLines(paste0(url, "data/"))
 files <- grep("\\.dat", files, value=TRUE)
 files <- gsub(".*>(.*.dat)<.*", "\\1", files)
 for(i in seq_along(files))
-  download.file(paste0(url,"data/",files)[i], paste0("data/",files)[i], quiet=TRUE)
+  download(paste0(url,"data/",files[i]), "data")
 
 mkdir("run")
-download.file(paste0(url,"run/model.cfg"), "run/model.cfg", quiet=TRUE)
-download.file(paste0(url,"run/sam.pin"), "run/sam.pin", quiet=TRUE)
-download.file(paste0(url,"run/sam"), "run/sam", quiet=TRUE)
+download(paste0(url,"run/model.cfg"), "run")
+download(paste0(url,"run/sam.pin"), "run")
+download(paste0(url,"run/sam"), "run")
 Sys.chmod("run/sam")
 
 mkdir("src")
@@ -24,7 +24,7 @@ files <- readLines(paste0(url, "src/"))
 files <- grep("\\.R", files, value=TRUE)
 files <- gsub(".*>(.*.R)<.*", "\\1", files)
 for(i in seq_along(files))
-  download.file(paste0(url,"src/",files)[i], paste0("src/",files)[i], quiet=TRUE)
+  download(paste0(url,"src/",files[i]), "src")
 
 ##################
 ## 2  Run model ##
